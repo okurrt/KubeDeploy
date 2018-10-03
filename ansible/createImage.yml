@@ -9,7 +9,7 @@
        command: "docker images -q aditiu/tomcatAws:{{IMAGE_VERSION}}"
        register: found_image_tomcat
 
-     - debug: msg="{{found_image.stdout}}"
+     - debug: msg="{{found_image_tomcat.stdout}}"
 
      - name: remove tomcat docker image
        command: "docker rmi -f aditiu/tomcatAws:{{IMAGE_VERSION}}"
