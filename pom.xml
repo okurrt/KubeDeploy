@@ -51,11 +51,4 @@
         <version>5.1.30</version>
     </dependency>
 </dependencies> 
-<distributionManagement>
-    <repository>
-        <id>central</id>
-        <name>LP-AditiUP-releases</name>
-        <url>http://localhost:8081/artifactory/libs-release</url>
-    </repository>
-</distributionManagement>
 </project>
