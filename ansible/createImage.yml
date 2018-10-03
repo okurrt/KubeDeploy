@@ -2,8 +2,7 @@
 
  - hosts: localhost
    remote_user: root
-   become_user: root
-   become: yes
+   become: no
    gather_facts: false
    tasks:
      - name: check tomcat image exist or not
