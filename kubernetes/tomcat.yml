@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: tomcat1
+  labels:
+    app: tomcat1
+spec:
+  ports:
+    - port: 80
+      targetPort: tomcat-port
+      protocol: TCP
+  selector:
+    app: tomcat1
+  type: LoadBalancer
+---
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: tomcat1
+  labels:
+    app: tomcat1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: tomcat1
+  template:
+    metadata:
+      labels:
+        app: tomcat1
+    spec:
+      containers:
+      - name: tomcat1
+        image: aditiu/tomcataws:4.3
+        ports: 
+         - name: tomcat-port 
+           containerPort: 8080
+
