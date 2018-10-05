@@ -27,7 +27,7 @@ spec:
         app: db
     spec:
       containers:
-      - image: aditiu/mysqlaws:4.4
+      - image: aditiu/mysqlaws:{IMAGE_VERSION}
         name: db
         env:
         - name: MYSQL_ROOT_PASSWORD
