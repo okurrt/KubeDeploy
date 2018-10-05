@@ -6,7 +6,7 @@
    gather_facts: false
    tasks:
      - name: check db service exist or not
-       command: "kubectl get services -l app=db"
+       command: "/usr/local/bin/kubectl get services -l app=db"
        register: found_service_db
 
      - name: remove db service
@@ -15,7 +15,7 @@
        when: found_service_db.stdout != ""
 
      - name: check db deployment exist or not
-       command: "kubectl get deployments -l app=db"
+       command: "/usr/local/bin/kubectl get deployments -l app=db"
        register: found_deployment_db
 
      - name: remove db deployment
