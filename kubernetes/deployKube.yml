@@ -1,0 +1,51 @@
+---
+
+ - hosts: localhost
+   remote_user: root
+   become: no
+   gather_facts: false
+   tasks:
+     - name: check db service exist or not
+       command: "kubectl get services -l app=db"
+       register: found_service_db
+
+     - name: remove db service
+       debug: msg="delete db service"
+#       command: "kubectl delete services db"
+       when: found_service_db.stdout != ""
+
+     - name: check db deployment exist or not
+       command: "kubectl get deployments -l app=db"
+       register: found_deployment_db
+
+     - name: remove db deployment
+       debug: msg="delete db deployments"
+#       command: "kubectl delete deployments db"
+       when: found_deployment_db.stdout != ""
+       
+     - name: create db service/deployment from mysql file
+       debug: msg="create db service and deployment"
+#       command: "kubectl create -f mysql.yml"
+     
+#Tomcat Steps     
+     - name: check tomcat service exist or not
+       command: "kubectl get services -l app=tomcat1"
+       register: found_service_tomcat
+
+     - name: remove tomcat service
+       debug: msg="delete tomcat service"
+#       command: "kubectl delete services tomcat1"
+       when: found_service_tomcat.stdout != ""
+
+     - name: check tomcat deployment exist or not
+       command: "kubectl get deployments -l app=tomcat1"
+       register: found_deployment_tomcat
+
+     - name: remove tomcat deployment
+       debug: msg="delete tomcat deployments"
+#       command: "kubectl delete deployments tomcat1"
+       when: found_deployment_tomcat.stdout != ""
+       
+     - name: create tomcat service/deployment from tomcat file
+       debug: msg="create tomcat service and deployment"
+#       command: "kubectl create -f tomcat.yml"
