@@ -1,8 +1,7 @@
 ---
 
  - hosts: localhost
-   remote_user: ec2-user
-   become: no
+   remote_user: root
    gather_facts: false
    tasks:
      - name: check db service exist or not
