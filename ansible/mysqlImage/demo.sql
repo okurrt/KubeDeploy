@@ -1,4 +1,4 @@
-CREATE TABLE book (book_id int(11) NOT NULL,title varchar(128) NOT NULL,
+CREATE TABLE book (book_id int(11) NOT NULL AUTO_INCREMENT,title varchar(128) NOT NULL,
   author varchar(45) NOT NULL,
   price float NOT NULL,
   PRIMARY KEY (book_id)
