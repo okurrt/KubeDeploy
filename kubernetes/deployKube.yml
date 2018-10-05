@@ -3,8 +3,8 @@
  - hosts: localhost
    remote_user: ec2-user
    become: yes
-   become_user: root
-   become_method: su
+   become_user: ec2-user
+   become_method: sudo
    gather_facts: false
    tasks:
      - name: check db service exist or not
