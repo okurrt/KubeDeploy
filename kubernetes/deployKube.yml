@@ -5,7 +5,7 @@
    gather_facts: false
    tasks:
      - name: check db service exist or not
-       command: "kubectl get service -l app=db"
+       command: "sudo kubectl get service -l app=db"
        register: found_service_db
 
      - name: remove db service
