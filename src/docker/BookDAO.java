@@ -46,21 +46,20 @@ public class BookDAO {
         }
     }
     
-    public boolean insertBook(Book book) throws SQLException {
-    	String sql = "INSERT INTO book (book_id,title, author, price) VALUES (? ,?, ?, ?)";
-        connect();
-         
-        PreparedStatement statement = jdbcConnection.prepareStatement(sql);
-        statement.setInt(1, book.getId());
-        statement.setString(2, book.getTitle());
-        statement.setString(3, book.getAuthor());
-        statement.setFloat(4, book.getPrice());
-         
-        boolean rowInserted = statement.executeUpdate() > 0;
-        statement.close();
-        disconnect();
-        return rowInserted;
-    }
+    	public boolean insertBook(Book book) throws SQLException {
+		String sql = "INSERT INTO book (title, author, price) VALUES (?, ?, ?)";
+		connect();
+		
+		PreparedStatement statement = jdbcConnection.prepareStatement(sql);
+		statement.setString(1, book.getTitle());
+		statement.setString(2, book.getAuthor());
+		statement.setFloat(3, book.getPrice());
+		
+		boolean rowInserted = statement.executeUpdate() > 0;
+		statement.close();
+		disconnect();
+		return rowInserted;
+	}
      
     public List<Book> listAllBooks() throws SQLException {
         List<Book> listBook = new ArrayList<>();
