@@ -31,7 +31,7 @@ spec:
     spec:
       containers:
       - name: tomcat1
-        image: aditiu/tomcataws:4.3
+        image: aditiu/tomcataws:4.4
         ports: 
          - name: tomcat-port 
            containerPort: 8080
