@@ -5,7 +5,7 @@
    gather_facts: false
    tasks:
      - name: check db service exist or not
-       command: "sudo kubectl version"
+       command: "echo $USER"
 #       command: "sudo kubectl get service -l app=db"
        register: found_service_db
      - debug: msg="{{found_service_db}}"
